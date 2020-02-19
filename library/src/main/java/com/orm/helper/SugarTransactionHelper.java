@@ -30,6 +30,7 @@ public final class SugarTransactionHelper {
             if (ManifestHelper.isDebugEnabled()) {
                 Log.d(LOG_TAG, "Could execute callback within transaction", e);
             }
+            callback.onExceptionThrown(e.getLocalizedMessage());
         } finally {
             database.endTransaction();
         }
@@ -37,5 +38,7 @@ public final class SugarTransactionHelper {
 
     public interface Callback {
         void manipulateInTransaction() throws Exception;
+
+        void onExceptionThrown(String e);
     }
 }
