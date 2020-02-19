@@ -36,6 +36,6 @@ public final class SugarTransactionHelper {
     }
 
     public interface Callback {
-        void manipulateInTransaction();
+        void manipulateInTransaction() throws Exception;
     }
 }
